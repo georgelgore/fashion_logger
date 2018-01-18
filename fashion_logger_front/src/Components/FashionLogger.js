@@ -19,6 +19,10 @@ class FashionLogger extends Component {
       );
   }
 
+  imgClickHandler = e => {
+    console.log(e.target);
+  };
+
   render() {
     return (
       <div>

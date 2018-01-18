@@ -5,7 +5,7 @@ import { Card } from "semantic-ui-react";
 const Topic = props => {
   console.log("topic", props);
   return (
-    <Card>
+    <Card onClick={props.imgClickHandler}>
       <h4 className="content">Topic: {props.topic.name}</h4>
       <ImageLister images={props.images} />
     </Card>
