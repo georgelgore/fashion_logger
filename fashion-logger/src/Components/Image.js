@@ -1,9 +1,10 @@
 import React from "react";
 
 const Image = props => {
+  console.log("image:", props);
   return (
     <div>
-      <h4>Image</h4>
+      <img height="200" src={props.image.url} alt={props.image.title} />
     </div>
   );
 };

@@ -1,10 +1,15 @@
 import React from "react";
+import Topic from "./Topic";
 
 const TopicLister = props => {
-  // console.log(props);
   return (
     <div>
-      <h3>TopicLister</h3>
+      {props.topics.map(top => {
+        let images = props.images.map(img => {
+          return img.topic_id === top.id ? img : null;
+        });
+        return <Topic key={top.id} topic={top} images={images} />;
+      })}
     </div>
   );
 };
