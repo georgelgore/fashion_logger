@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import ImageLister from "./ImageLister";
+import React from "react";
+import TopicLister from "./TopicLister";
 
 const User = props => {
+  // console.log(props.info.topics);
   return (
     <div>
-      <h2>User Component</h2>
-      <ImageLister />
+      <h2>Welcome, {props.info.username}!</h2>
+      <TopicLister topics={props.info.topics} />
     </div>
   );
 };
