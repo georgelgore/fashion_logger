@@ -1,7 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(username:"ggore", password:"123", email:"george@george.com")
+Topic.create(name:"Hypebeast", user_id:1, category:"Streetwear")
+Image.create(url:"https://hypb.imgix.net/image/2017/01/etudes-2017-fall-winter-collection-paris-fashion-week-1.jpg?w=800&q=90&fit=max&auto=compress%2Cformat", title:"runway hypebeast", tag:"streetwear", topic_id:1)

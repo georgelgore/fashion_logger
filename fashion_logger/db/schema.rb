@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180118183629) do
   create_table "images", force: :cascade do |t|
     t.string "url"
     t.string "title"
+    t.string "tag"
     t.bigint "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -28,7 +29,6 @@ ActiveRecord::Schema.define(version: 20180118183629) do
     t.string "name"
     t.bigint "user_id"
     t.string "category"
-    t.string "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_topics_on_user_id"
