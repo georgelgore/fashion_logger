@@ -8,7 +8,16 @@ const TopicLister = props => {
         let images = props.images.map(img => {
           return img.topic_id === top.id ? img : null;
         });
-        return <Topic key={top.id} topic={top} images={images} />;
+        return (
+          <Topic
+            key={top.id}
+            id={top.id}
+            topic={top}
+            images={images}
+            imgClickHandler={props.imgClickHandler}
+            clicked={props.clicked}
+          />
+        );
       })}
     </div>
   );

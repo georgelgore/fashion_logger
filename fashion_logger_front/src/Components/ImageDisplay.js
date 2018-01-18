@@ -1,8 +1,8 @@
 import React from "react";
 
-const Image = props => {
+const ImageDisplay = props => {
   return (
-    <div id={props.topicId}>
+    <div>
       <img
         height="200"
         src={props.image.url}
@@ -13,4 +13,4 @@ const Image = props => {
   );
 };
 
-export default Image;
+export default ImageDisplay;
