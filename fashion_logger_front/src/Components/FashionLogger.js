@@ -21,7 +21,7 @@ class FashionLogger extends Component {
   }
 
   imgClickHandler = e => {
-    let id = parseInt(e.target.id);
+    let id = parseInt(e.target.id, 10);
     this.setState({
       clicked: [id]
     });

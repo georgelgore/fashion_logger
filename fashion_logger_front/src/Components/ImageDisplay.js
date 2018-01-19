@@ -2,7 +2,7 @@ import React from "react";
 
 const ImageDisplay = props => {
   return (
-    <div>
+    <div id={props.image.topic_id}>
       <img
         height="200"
         src={props.image.url}

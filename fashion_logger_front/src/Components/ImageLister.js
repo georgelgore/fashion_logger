@@ -4,7 +4,7 @@ import Image from "./Image";
 const ImageLister = props => {
   console.log("ImageLister,", props);
   return (
-    <div>
+    <div id={props.topicId}>
       {props.images.map(img => (
         <Image key={img.id} image={img} id={props.id} topicId={props.topicId} />
       ))}
