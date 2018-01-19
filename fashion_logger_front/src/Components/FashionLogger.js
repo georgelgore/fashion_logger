@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import User from "./User";
 import TopicDisplay from "./TopicDisplay";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink
-} from "react-router-dom";
-import Home from "./Home";
-import Edit from "./Edit";
+import { Switch, Route } from "react-router-dom";
+import NewTopic from "./NewTopic";
+import NewPic from "./NewPic";
 
 class FashionLogger extends Component {
   constructor() {
@@ -29,12 +24,23 @@ class FashionLogger extends Component {
   }
 
   render() {
-    console.log("render", this.state);
     return (
       <div>
-        <h1> Welcome to the Body of Fashion Logger</h1>
-        <User info={this.state.user} clicked={this.state.clicked} />
         <Switch>
+          <Route
+            path="/topics/new"
+            render={args => {
+              return <NewTopic />;
+            }}
+          />
+          <Route
+            path="/topics/:id/new"
+            render={({ match }) => {
+              return (
+                <NewPic info={this.state.user} topicId={match.params.id} />
+              );
+            }}
+          />
           <Route
             path="/topics/:id"
             render={({ match }) => {
@@ -43,8 +49,17 @@ class FashionLogger extends Component {
               );
             }}
           />
-
-          <Route path="/edit" component={Edit} />
+          <Route
+            path="/topics"
+            render={() => {
+              return (
+                <div>
+                  <h1> Welcome to the Body of Fashion Logger</h1>
+                  <User info={this.state.user} clicked={this.state.clicked} />
+                </div>
+              );
+            }}
+          />
         </Switch>
       </div>
     );

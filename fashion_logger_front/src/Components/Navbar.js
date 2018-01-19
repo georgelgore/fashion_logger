@@ -9,6 +9,10 @@ const Navbar = () => {
         {"    "}
         Topics
       </Link>
+      <Link to="/edit">
+        {"    "}
+        Edit
+      </Link>
     </div>
   );
 };
