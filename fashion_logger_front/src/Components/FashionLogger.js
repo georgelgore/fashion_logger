@@ -14,7 +14,8 @@ class FashionLogger extends Component {
         title: "",
         url: "",
         tag: "",
-        topicId: ""
+        topicId: "",
+        userId: ""
       },
       newTopicInfo: {}
     };
@@ -29,6 +30,23 @@ class FashionLogger extends Component {
         })
       );
   }
+
+  addPic = newPicData => {
+    fetch("http://localhost:3000/api/v1/images", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        title: newPicData.title,
+        url: newPicData.url,
+        tag: newPicData.tag,
+        topicId: newPicData.topicId,
+        userId: newPicData.userId
+      })
+    });
+  };
 
   newPicSubmitHandler = e => {
     e.preventDefault();
@@ -46,22 +64,17 @@ class FashionLogger extends Component {
     switch (name) {
       case "title":
         this.setState({
-          newPicInfo: { ...this.state.newPicInfo, title: value }
+          newPicInfo: { ...this.state.newPicInfo, title: value, userId: userId }
         });
         break;
       case "url":
         this.setState({
-          newPicInfo: { ...this.state.newPicInfo, url: value }
+          newPicInfo: { ...this.state.newPicInfo, url: value, userId: userId }
         });
         break;
       case "tag":
         this.setState({
-          newPicInfo: { ...this.state.newPicInfo, tag: value }
-        });
-        break;
-      case "tag":
-        this.setState({
-          newPicInfo: { ...this.state.newPicInfo, userId: userId }
+          newPicInfo: { ...this.state.newPicInfo, tag: value, userId: userId }
         });
         break;
     }
