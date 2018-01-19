@@ -5,6 +5,8 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Home from "./Components/Home";
 import Edit from "./Components/Edit";
+import Topic from "./Components/Topic";
+
 const Navbar = () => (
   <div>
     <NavLink
@@ -40,6 +42,11 @@ const Navbar = () => (
 );
 
 class App extends Component {
+  imgClickHandler = e => {
+    let id = parseInt(e.target.id, 10);
+    window.history.pushState("Topic", "", `/profile/1`);
+  };
+
   render() {
     return (
       <Router>
@@ -48,6 +55,13 @@ class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/profile" component={FashionLogger} />
           <Route exact path="/edit" component={Edit} />
+          <Route
+            exact
+            path="/profile/1"
+            render={routerProps => {
+              return <Topic {...routerProps} onClick={this.imgClickHandler} />;
+            }}
+          />
         </div>
       </Router>
     );

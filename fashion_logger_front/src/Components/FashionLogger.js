@@ -5,8 +5,7 @@ class FashionLogger extends Component {
   constructor() {
     super();
     this.state = {
-      user: [],
-      clicked: []
+      user: []
     };
   }
 
@@ -19,13 +18,6 @@ class FashionLogger extends Component {
         })
       );
   }
-
-  imgClickHandler = e => {
-    let id = parseInt(e.target.id, 10);
-    this.setState({
-      clicked: [id]
-    });
-  };
 
   render() {
     console.log("render", this.state);
