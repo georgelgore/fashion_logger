@@ -9,7 +9,14 @@ class FashionLogger extends Component {
   constructor() {
     super();
     this.state = {
-      user: []
+      user: [],
+      newPicInfo: {
+        title: "",
+        url: "",
+        tag: "",
+        topicId: ""
+      },
+      newTopicInfo: {}
     };
   }
 
@@ -23,7 +30,45 @@ class FashionLogger extends Component {
       );
   }
 
+  newPicSubmitHandler = e => {
+    e.preventDefault();
+    let topicId = e.target.id;
+    this.setState({
+      newPicInfo: { ...this.state.newPicInfo, topicId: topicId }
+    });
+  };
+
+  newPicChangeHandler = e => {
+    console.log(e.target);
+    let value = e.target.value;
+    let name = e.target.name;
+    let userId = this.state.user.id;
+    switch (name) {
+      case "title":
+        this.setState({
+          newPicInfo: { ...this.state.newPicInfo, title: value }
+        });
+        break;
+      case "url":
+        this.setState({
+          newPicInfo: { ...this.state.newPicInfo, url: value }
+        });
+        break;
+      case "tag":
+        this.setState({
+          newPicInfo: { ...this.state.newPicInfo, tag: value }
+        });
+        break;
+      case "tag":
+        this.setState({
+          newPicInfo: { ...this.state.newPicInfo, userId: userId }
+        });
+        break;
+    }
+  };
+
   render() {
+    console.log("render", this.state.newPicInfo);
     return (
       <div>
         <Switch>
@@ -37,7 +82,15 @@ class FashionLogger extends Component {
             path="/topics/:id/new"
             render={({ match }) => {
               return (
-                <NewPic info={this.state.user} topicId={match.params.id} />
+                <NewPic
+                  info={this.state.user}
+                  topicId={match.params.id}
+                  newPicSubmitHandler={this.newPicSubmitHandler}
+                  newPicChangeHandler={this.newPicChangeHandler}
+                  newPicTitle={this.state.newPicInfo.title}
+                  newPicUrl={this.state.newPicInfo.url}
+                  newPicTag={this.state.newPicInfo.tag}
+                />
               );
             }}
           />
