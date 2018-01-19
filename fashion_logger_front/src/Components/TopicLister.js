@@ -5,9 +5,7 @@ const TopicLister = props => {
   return (
     <div>
       {props.topics.map(top => {
-        let images = props.images.map(img => {
-          return img.topic_id === top.id ? img : null;
-        });
+        let images = props.images.filter(img => img.topic_id === top.id);
         return (
           <Topic
             key={top.id}
