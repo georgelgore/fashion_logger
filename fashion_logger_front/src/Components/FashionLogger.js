@@ -33,32 +33,19 @@ class FashionLogger extends Component {
     return (
       <div>
         <h1> Welcome to the Body of Fashion Logger</h1>
-        <Router>
-          <Switch>
-            <div>
-              <Route exact path="/" component={Home} />
-              <Route
-                exact
-                path="/topics/:id"
-                render={({ match }) => {
-                  return (
-                    <TopicDisplay info={this.state.user} id={match.params.id} />
-                  );
-                }}
-              />
-              <Route
-                exact
-                path="/topics"
-                render={() => {
-                  return (
-                    <User info={this.state.user} clicked={this.state.clicked} />
-                  );
-                }}
-              />
-              <Route exact path="/edit" component={Edit} />
-            </div>
-          </Switch>
-        </Router>
+        <User info={this.state.user} clicked={this.state.clicked} />
+        <Switch>
+          <Route
+            path="/topics/:id"
+            render={({ match }) => {
+              return (
+                <TopicDisplay info={this.state.user} id={match.params.id} />
+              );
+            }}
+          />
+
+          <Route path="/edit" component={Edit} />
+        </Switch>
       </div>
     );
   }

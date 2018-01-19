@@ -5,13 +5,9 @@ const Navbar = () => {
   return (
     <div>
       <Link to="/">Home</Link>
-      <Link to="/profile">
+      <Link to="/topics">
         {"    "}
-        Profile
-      </Link>
-      <Link to="/edit">
-        {"    "}
-        Edit Profile
+        Topics
       </Link>
     </div>
   );
