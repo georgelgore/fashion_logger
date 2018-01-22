@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import User from "./User";
 import Search from "./Search";
 import TopicDisplay from "./TopicDisplay";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import { Header } from "semantic-ui-react";
 import NewTopic from "./NewTopic";
 import NewPic from "./NewPic";
@@ -53,13 +53,8 @@ class FashionLogger extends Component {
       .then(resp => this.props.history.push(`/topics/${newPicData.topicId}`));
   };
 
-<<<<<<< HEAD
-  addTopic = newPicData => {
-    fetch("http://localhost:3000/api/v1/images", {
-=======
   addTopic = newTopicData => {
     fetch("http://localhost:3000/api/v1/topics", {
->>>>>>> origin/Tashawn
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -168,28 +163,27 @@ class FashionLogger extends Component {
       <div id="background-holder">
         <Switch>
           <Route
-<<<<<<< HEAD
             path="/topics/search"
             render={() => {
               return (
                 <div style={{ marginTop: "5.25em" }}>
                   <Search user={this.state.user} />;
-=======
-            path="/topics"
-            exact
-            render={() => {
-              return (
-                <div clearing style={{ marginTop: "5.25em" }}>
-                  <div secondary>
-                    <Header as="h1" textAlign="center">
-                      Your Topics
-                    </Header>
-                    <User info={this.state.user} clicked={this.state.clicked} />
-                  </div>
->>>>>>> origin/Tashawn
                 </div>
               );
             }}
+          />
+          path="/topics" exact render={() => {
+            return (
+              <div clearing style={{ marginTop: "5.25em" }}>
+                <div secondary>
+                  <Header as="h1" textAlign="center">
+                    Your Topics
+                  </Header>
+                  <User info={this.state.user} clicked={this.state.clicked} />
+                </div>
+              </div>
+            );
+          }}
           />
           <Route
             path="/topics/new"
@@ -231,7 +225,6 @@ class FashionLogger extends Component {
               );
             }}
           />
-<<<<<<< HEAD
           <Route
             path="/topics"
             render={() => {
@@ -247,8 +240,6 @@ class FashionLogger extends Component {
               );
             }}
           />
-=======
->>>>>>> origin/Tashawn
         </Switch>
       </div>
     );
