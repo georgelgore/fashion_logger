@@ -1,55 +1,28 @@
 import React, { Component } from "react";
 import "./App.css";
 import FashionLogger from "./Components/FashionLogger";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Home from "./Components/Home";
-import Edit from "./Components/Edit";
-const Navbar = () => (
-  <div>
-    <NavLink
-      to="/"
-      exact
-      activeStyle={{
-        color: "blue"
-      }}
-    >
-      Home
-    </NavLink>
-    <NavLink
-      to="/profile"
-      exact
-      activeStyle={{
-        color: "blue"
-      }}
-    >
-      {"    "}
-      Profile
-    </NavLink>
-    <NavLink
-      to="/edit"
-      exact
-      activeStyle={{
-        color: "blue"
-      }}
-    >
-      {"    "}
-      Edit Profile
-    </NavLink>
-  </div>
-);
+import Navbar from "./Components/Navbar";
+import { Segment } from "semantic-ui-react";
 
 class App extends Component {
   render() {
     return (
-      <Router>
+      <div>
+        <Navbar />
         <div>
-          <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route exact path="/profile" component={FashionLogger} />
-          <Route exact path="/edit" component={Edit} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route
+              path="/topics"
+              render={args => {
+                return <FashionLogger args={args} />;
+              }}
+            />
+          </Switch>
         </div>
-      </Router>
+      </div>
     );
   }
 }

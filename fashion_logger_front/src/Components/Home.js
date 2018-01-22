@@ -1,12 +1,18 @@
 import React from "react";
+import { Image, Header } from "semantic-ui-react";
 
 const Home = props => {
   return (
-    <div>
-      <h1>Welcome</h1>
-      <div>
-        <img src="https://i.pinimg.com/736x/e8/e8/5a/e8e85a0f3a35e5c3737287dc137b4ef3--flower-collage-collage-art.jpg" />
-      </div>
+    <div style={{ marginTop: "6.00em" }}>
+      <Header textAlign="center" as="h1">
+        Welcome to Fashion Logger
+      </Header>
+      <Image
+        centered
+        style={{ maxHeight: 500 }}
+        src="https://hips.hearstapps.com/hbz.h-cdn.co/assets/cm/15/04/54c039d272b0b_-_hbz-april-2014-solange-knowles-5-xl-promo.jpg"
+        // src="https://media.giphy.com/media/li0a9ltRF07Sw/giphy.gif"
+      />
     </div>
   );
 };

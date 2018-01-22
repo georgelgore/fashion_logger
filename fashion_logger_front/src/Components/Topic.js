@@ -1,19 +1,32 @@
 import React from "react";
-import ImageLister from "./ImageLister";
-import ImageDisplay from "./ImageDisplay";
-import { Card } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Card, Icon, Segment, Image } from "semantic-ui-react";
 
 const Topic = props => {
+  console.log("topic:", props);
   return (
-    <Card id={props.topic.id} onClick={props.imgClickHandler}>
-      <h4 className="content" id={props.topic.id}>
-        Topic: {props.topic.name}
-      </h4>
-      {props.clicked[0] === props.id ? (
-        <ImageLister images={props.images} topicId={props.id} />
-      ) : (
-        <ImageDisplay image={props.images[0]} />
-      )}
+    <Card
+      size="medium"
+      color="teal"
+      id={props.topic.id}
+      onClick={props.imgClickHandler}
+    >
+      <Link to={`/topics/${props.topic.id}`}>
+        <Image
+          centered
+          style={{ maxHeight: 350, minHeight: 350 }}
+          src={props.images[0].url}
+        />
+        <Card.Content>
+          <Card.Header as="h2" textAlign="center" id={props.topic.id}>
+            {props.topic.name}
+          </Card.Header>
+          <Card.Meta>
+            <Icon name="tag" />
+            {props.topic.category}
+          </Card.Meta>
+        </Card.Content>
+      </Link>
     </Card>
   );
 };
