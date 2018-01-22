@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import TopicLister from "./TopicLister";
-import Topic from "./Topic";
-import { Route, Switch } from "react-router-dom";
+import { Header, Segment, Container } from "semantic-ui-react";
 
 class User extends Component {
   constructor(props) {
@@ -25,8 +24,8 @@ class User extends Component {
   render() {
     console.log("user:", this.props);
     return (
-      <div>
-        <h2>Welcome, {this.props.info.username}!</h2>
+      <Container>
+        <Header>Welcome, {this.props.info.username}!</Header>
         {this.props.info.topics ? (
           <TopicLister
             topics={this.props.info.topics}
@@ -35,7 +34,7 @@ class User extends Component {
             clicked={this.props.clicked}
           />
         ) : null}
-      </div>
+      </Container>
     );
   }
 }

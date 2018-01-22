@@ -1,15 +1,15 @@
 import React from "react";
+import { Image } from "semantic-ui-react";
 
 const ImageDisplay = props => {
   return (
-    <div id={props.image.topic_id}>
-      <img
-        height="200"
-        src={props.image.url}
-        alt={props.image.title}
-        id={props.id}
-      />
-    </div>
+    <Image
+      style={{ maxHeight: 250 }}
+      centered
+      id={props.image.topic_id}
+      src={props.image.url}
+      alt={props.image.title}
+    />
   );
 };
 

@@ -1,14 +1,14 @@
 import React from "react";
 import Topic from "./Topic";
-import { Link } from "react-router-dom";
+import { Card, Container, Segment } from "semantic-ui-react";
 
 const TopicLister = props => {
   return (
-    <div>
-      {props.topics.map(top => {
-        let images = props.images.filter(img => img.topic_id === top.id);
-        return (
-          <Link to={`/topics/${top.id}`}>
+    <Container>
+      <Card.Group centered itemsPerRow={3}>
+        {props.topics.map(top => {
+          let images = props.images.filter(img => img.topic_id === top.id);
+          return (
             <Topic
               key={top.id}
               id={top.id}
@@ -18,10 +18,10 @@ const TopicLister = props => {
               clicked={props.clicked}
               state={props.state}
             />
-          </Link>
-        );
-      })}
-    </div>
+          );
+        })}
+      </Card.Group>
+    </Container>
   );
 };
 
