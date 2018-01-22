@@ -15,7 +15,15 @@ const Topic = props => {
         <Image
           centered
           style={{ maxHeight: 350, minHeight: 350 }}
+<<<<<<< HEAD
           src={props.images[0] ? props.images[0].url : "https://goo.gl/8nV5Fe"}
+=======
+          src={
+            props.images[0]
+              ? props.images[0].url
+              : "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659652_960_720.png"
+          }
+>>>>>>> origin/Tashawn
         />
         <Card.Content>
           <Card.Header as="h2" textAlign="center" id={props.topic.id}>

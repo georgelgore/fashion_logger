@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Form, Segment, Button, Image } from "semantic-ui-react";
 
-const NewTopic = () => {
-  console.log("in new topic");
+const NewTopic = props => {
+  console.log(props);
   return (
     <Segment inverted style={{ marginTop: "5.25em" }}>
       <h1>New Topic</h1>
-      <Form inverted>
+      <Form inverted onSubmit={props.newTopicSubmitHandler}>
         <Form.Group widths="equal">
           <Form.Input
             fluid
@@ -14,19 +15,17 @@ const NewTopic = () => {
             icon="idea"
             placeholder="Topic Name"
             name="name"
+            value={props.newTopicName}
+            onChange={props.newTopicChangeHandler}
           />
           <Form.Input
             icon="tag"
             fluid
-            label="Category"
-            placeholder="Category"
-            name="tag"
-          />
-          <Form.Input
-            icon="image"
-            fluid
-            label="Starter Image URL"
-            placeholder="Starter Image URL"
+            label="Tag Category"
+            placeholder="Tag Category"
+            name="category"
+            value={props.newTopicCategory}
+            onChange={props.newTopicChangeHandler}
           />
         </Form.Group>
         <Button type="submit">Submit</Button>
