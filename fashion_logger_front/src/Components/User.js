@@ -31,7 +31,6 @@ class User extends Component {
             topics={this.props.info.topics}
             images={this.props.info.images}
             imgClickHandler={this.imgClickHandler}
-            clicked={this.props.clicked}
           />
         ) : null}
       </Container>

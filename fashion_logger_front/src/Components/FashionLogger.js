@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import User from "./User";
+import Search from "./Search";
 import TopicDisplay from "./TopicDisplay";
 import { Switch, Route } from "react-router-dom";
 import { Header } from "semantic-ui-react";
@@ -119,6 +120,16 @@ class FashionLogger extends Component {
     return (
       <div id="background-holder">
         <Switch>
+          <Route
+            path="/topics/search"
+            render={() => {
+              return (
+                <div style={{ marginTop: "5.25em" }}>
+                  <Search />;
+                </div>
+              );
+            }}
+          />
           <Route
             path="/topics/new"
             render={args => {

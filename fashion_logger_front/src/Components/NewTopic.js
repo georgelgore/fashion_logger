@@ -18,8 +18,8 @@ const NewTopic = () => {
           <Form.Input
             icon="tag"
             fluid
-            label="Tag Category"
-            placeholder="Tag Category"
+            label="Category"
+            placeholder="Category"
             name="tag"
           />
           <Form.Input

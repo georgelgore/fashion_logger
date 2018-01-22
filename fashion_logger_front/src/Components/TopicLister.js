@@ -15,7 +15,6 @@ const TopicLister = props => {
               topic={top}
               images={images}
               imgClickHandler={props.imgClickHandler}
-              clicked={props.clicked}
               state={props.state}
             />
           );

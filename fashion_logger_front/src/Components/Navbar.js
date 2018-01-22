@@ -21,6 +21,11 @@ const Navbar = () => {
           <Icon name="plus" />Add New Topic
         </Link>
       </Menu.Item>
+      <Menu.Item active>
+        <Link to="/topics/search">
+          <Icon name="search" />Search Categories
+        </Link>
+      </Menu.Item>
     </Menu>
   );
 };
