@@ -4,7 +4,6 @@ import FashionLogger from "./Components/FashionLogger";
 import { Route, Switch } from "react-router-dom";
 import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
-import { Segment } from "semantic-ui-react";
 
 class App extends Component {
   render() {

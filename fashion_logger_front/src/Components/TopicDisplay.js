@@ -16,7 +16,7 @@ const TopicDisplay = props => {
 
   return (
     <Container style={{ marginTop: "5.25em" }}>
-      <Segment float tertiary>
+      <Segment float="true" tertiary>
         <Segment>
           <Header as="h1">{nameToDisplay}</Header>
         </Segment>

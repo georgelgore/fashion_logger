@@ -1,6 +1,6 @@
 import React from "react";
 import Topic from "./Topic";
-import { Card, Container, Segment } from "semantic-ui-react";
+import { Card, Container } from "semantic-ui-react";
 
 const TopicLister = props => {
   return (

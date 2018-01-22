@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import User from "./User";
 import TopicDisplay from "./TopicDisplay";
 import { Switch, Route } from "react-router-dom";
-import { Header, Segment, Container } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import NewTopic from "./NewTopic";
 import NewPic from "./NewPic";
 
@@ -44,7 +44,8 @@ class FashionLogger extends Component {
         );
     });
   };
-  addTopic = newTopicData => {
+
+  addTopic = newPicData => {
     fetch("http://localhost:3000/api/v1/images", {
       method: "POST",
       headers: {
@@ -82,7 +83,7 @@ class FashionLogger extends Component {
     let topicId = e.target.id;
     this.setState(
       {
-        newPicInfo: { ...this.state.newPicInfo, topicId: parseInt(topicId) }
+        newPicInfo: { ...this.state.newPicInfo, topicId: parseInt(topicId, 10) }
       },
       () => this.addPic(this.state.newPicInfo)
     );
@@ -107,6 +108,8 @@ class FashionLogger extends Component {
         this.setState({
           newPicInfo: { ...this.state.newPicInfo, tag: value }
         });
+        break;
+      default:
         break;
     }
   };
@@ -150,12 +153,12 @@ class FashionLogger extends Component {
             path="/topics"
             render={() => {
               return (
-                <div clearing style={{ marginTop: "5.25em" }}>
-                  <div secondary>
+                <div style={{ marginTop: "5.25em" }}>
+                  <div>
                     <Header as="h1" textAlign="center">
                       Your Topics
                     </Header>
-                    <User info={this.state.user} clicked={this.state.clicked} />
+                    <User info={this.state.user} />
                   </div>
                 </div>
               );

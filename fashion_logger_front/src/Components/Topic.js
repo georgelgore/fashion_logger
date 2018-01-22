@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Icon, Segment, Image } from "semantic-ui-react";
+import { Card, Icon, Image } from "semantic-ui-react";
 
 const Topic = props => {
   console.log("topic:", props);
@@ -15,7 +15,9 @@ const Topic = props => {
         <Image
           centered
           style={{ maxHeight: 350, minHeight: 350 }}
-          src={props.images[0].url}
+          src={
+            props.images[0].url ? props.images[0].url : "https://goo.gl/8nV5Fe"
+          }
         />
         <Card.Content>
           <Card.Header as="h2" textAlign="center" id={props.topic.id}>

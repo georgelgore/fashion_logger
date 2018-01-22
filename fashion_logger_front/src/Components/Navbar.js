@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Menu, Container, Icon } from "semantic-ui-react";
+import { Menu, Icon } from "semantic-ui-react";
 
 const Navbar = () => {
   return (

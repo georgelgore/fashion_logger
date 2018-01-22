@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TopicLister from "./TopicLister";
-import { Header, Segment, Container } from "semantic-ui-react";
+import { Header, Container } from "semantic-ui-react";
 
 class User extends Component {
   constructor(props) {

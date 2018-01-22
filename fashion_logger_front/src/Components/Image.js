@@ -6,7 +6,6 @@ const Image2 = props => {
     <Card centered className="image content" id={props.topicId}>
       <Image
         centered
-        floated
         className="image"
         size="huge"
         src={props.image.url}
