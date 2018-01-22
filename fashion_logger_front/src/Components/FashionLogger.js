@@ -39,15 +39,17 @@ class FashionLogger extends Component {
         tag: newPicData.tag,
         topic_id: newPicData.topicId
       })
-    }).then(resp => {
-      return fetch("http://localhost:3000/api/v1/users")
-        .then(resp => resp.json())
-        .then(arr =>
-          this.setState({
-            user: arr[0]
-          })
-        );
-    });
+    })
+      .then(resp => {
+        return fetch("http://localhost:3000/api/v1/users")
+          .then(resp => resp.json())
+          .then(arr =>
+            this.setState({
+              user: arr[0]
+            })
+          );
+      })
+      .then(resp => this.props.history.push(`/topics/${newPicData.topicId}`));
   };
 
   addTopic = newTopicData => {
