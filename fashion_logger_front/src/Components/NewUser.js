@@ -30,7 +30,7 @@ const NewUser = props => {
               </div>
               <div className="field">
                 <div className="ui left icon input">
-                  <i className="mail outline icon" />
+                  <i className="mail icon" />
                   <input
                     type="text"
                     value={props.newUserInfo.email}
