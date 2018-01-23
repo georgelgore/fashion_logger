@@ -6,6 +6,7 @@ import { Header } from "semantic-ui-react";
 import NewTopic from "./NewTopic";
 import NewPic from "./NewPic";
 import Search from "./Search";
+import NewUser from "./NewUser";
 
 class FashionLogger extends Component {
   constructor() {
@@ -74,10 +75,9 @@ class FashionLogger extends Component {
     if (token) {
       fetch(`http://localhost:3000/api/v1/users/${token}`)
         .then(resp => resp.json())
-        .then(arr => {
-          debugger;
+        .then(obj => {
           this.setState({
-            user: arr
+            user: obj
           });
         });
     } else {
@@ -130,6 +130,7 @@ class FashionLogger extends Component {
               return <NewTopic />;
             }}
           />
+
           <Route
             path="/topics/search"
             render={() => {

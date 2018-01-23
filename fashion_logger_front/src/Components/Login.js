@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 class logIn extends React.Component {
   constructor() {
@@ -50,8 +51,6 @@ class logIn extends React.Component {
   };
 
   render() {
-    console.log("login props:", this.props);
-
     const { fields } = this.state;
     return (
       <Container>
@@ -100,7 +99,10 @@ class logIn extends React.Component {
             <div className="ui error message" />
           </form>
           <div className="ui message">
-            New to us? <a href="#">Sign Up</a>
+            New to us?
+            <Link to="/users/new">
+              <button>Sign Up</button>
+            </Link>
           </div>
         </div>
       </Container>
