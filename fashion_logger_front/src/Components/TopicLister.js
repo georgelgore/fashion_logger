@@ -1,11 +1,11 @@
 import React from "react";
 import Topic from "./Topic";
-import { Card, Container, Segment } from "semantic-ui-react";
+import { Card, Container } from "semantic-ui-react";
 
 const TopicLister = props => {
   return (
     <Container>
-      <Card.Group centered itemsPerRow={3}>
+      <Card.Group centered="true" itemsPerRow={3}>
         {props.topics.map(top => {
           let images = props.images.filter(img => img.topic_id === top.id);
           return (

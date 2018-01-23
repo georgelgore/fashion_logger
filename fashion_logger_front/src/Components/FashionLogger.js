@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import User from "./User";
 import TopicDisplay from "./TopicDisplay";
 import { Switch, Route } from "react-router-dom";
-import { Header, Segment, Container } from "semantic-ui-react";
+import { Header } from "semantic-ui-react";
 import NewTopic from "./NewTopic";
 import NewPic from "./NewPic";
+import Search from "./Search";
 
 class FashionLogger extends Component {
   constructor() {
@@ -82,7 +83,7 @@ class FashionLogger extends Component {
     let topicId = e.target.id;
     this.setState(
       {
-        newPicInfo: { ...this.state.newPicInfo, topicId: parseInt(topicId) }
+        newPicInfo: { ...this.state.newPicInfo, topicId: parseInt(topicId, 10) }
       },
       () => this.addPic(this.state.newPicInfo)
     );
@@ -108,6 +109,8 @@ class FashionLogger extends Component {
           newPicInfo: { ...this.state.newPicInfo, tag: value }
         });
         break;
+      default:
+        break;
     }
   };
 
@@ -120,6 +123,16 @@ class FashionLogger extends Component {
             path="/topics/new"
             render={args => {
               return <NewTopic />;
+            }}
+          />
+          <Route
+            path="/topics/search"
+            render={() => {
+              return (
+                <div style={{ marginTop: "5.25em" }}>
+                  <Search user={this.state.user} />;
+                </div>
+              );
             }}
           />
           <Route
@@ -150,8 +163,8 @@ class FashionLogger extends Component {
             path="/topics"
             render={() => {
               return (
-                <div clearing style={{ marginTop: "5.25em" }}>
-                  <div secondary>
+                <div clearing="true" style={{ marginTop: "5.25em" }}>
+                  <div secondary="true">
                     <Header as="h1" textAlign="center">
                       Your Topics
                     </Header>

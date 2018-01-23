@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Form, Segment, Button, Image } from "semantic-ui-react";
 
 const NewTopic = props => {

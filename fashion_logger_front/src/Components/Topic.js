@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Icon, Segment, Image } from "semantic-ui-react";
+import { Card, Icon, Image } from "semantic-ui-react";
 
 const Topic = props => {
-  console.log("topic:", props);
   return (
     <Card
       size="medium"
