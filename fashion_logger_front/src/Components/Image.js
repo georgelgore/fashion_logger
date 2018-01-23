@@ -8,13 +8,17 @@ const Image2 = props => {
         centered
         floated
         className="image"
-        size="huge"
+        size="medium"
         src={props.image.url}
         alt={props.image.title}
         id={props.id}
       />
       <Card.Meta>
-        <Popup trigger={<Icon name="tag" />} content={props.image.url} />
+        <Popup
+          trigger={<Icon name="tag" />}
+          on="click"
+          content={props.image.url}
+        />
         {props.image.tag}
       </Card.Meta>
     </Card>

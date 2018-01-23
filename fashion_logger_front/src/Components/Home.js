@@ -3,7 +3,7 @@ import { Image, Header } from "semantic-ui-react";
 
 const Home = props => {
   return (
-    <div style={{ marginTop: "6.00em" }}>
+    <div style={{ marginTop: "5.50em" }}>
       <Header textAlign="center" as="h1">
         Welcome to Fashion Logger
       </Header>

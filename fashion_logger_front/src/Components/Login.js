@@ -55,44 +55,53 @@ class logIn extends React.Component {
     const { fields } = this.state;
     return (
       <Container>
-        {this.state.error ? <h1> Try Again </h1> : null}
-        <form
-          className="ui large form"
-          onSubmit={this.handleSubmit}
-          style={{ marginTop: "5.00em" }}
+        <div
+          style={{
+            marginTop: "10.00em",
+            marginLeft: "30%",
+            marginRight: "30%",
+            maxWidth: "450px"
+          }}
         >
-          <div className="ui stacked segment">
-            <div className="field">
-              <div className="ui left icon input">
-                <i className="user icon" />
-                <input
-                  onChange={this.handleChange}
-                  value={fields.username}
-                  type="text"
-                  name="username"
-                  placeholder="username"
-                />
+          {this.state.error ? <h1> Try Again </h1> : null}
+          <form className="ui large form" onSubmit={this.handleSubmit}>
+            <Container size="small">
+              <div className="ui stacked segment">
+                <div className="field">
+                  <div className="ui left icon input">
+                    <i className="user icon" />
+                    <input
+                      onChange={this.handleChange}
+                      value={fields.username}
+                      type="text"
+                      name="username"
+                      placeholder="username"
+                    />
+                  </div>
+                </div>
+                <div className="field">
+                  <div className="ui left icon input">
+                    <i className="lock icon" />
+                    <input
+                      onChange={this.handleChange}
+                      value={fields.password}
+                      type="password"
+                      name="password"
+                      placeholder="Password"
+                    />
+                  </div>
+                </div>
+                <Button black="true" fluid>
+                  Login
+                </Button>
               </div>
-            </div>
-            <div className="field">
-              <div className="ui left icon input">
-                <i className="lock icon" />
-                <input
-                  onChange={this.handleChange}
-                  value={fields.password}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                />
-              </div>
-            </div>
-            <Button black="true">Login</Button>
-          </div>
+            </Container>
 
-          <div className="ui error message" />
-        </form>
-        <div className="ui message">
-          New to us? <a href="#">Sign Up</a>
+            <div className="ui error message" />
+          </form>
+          <div className="ui message">
+            New to us? <a href="#">Sign Up</a>
+          </div>
         </div>
       </Container>
     );

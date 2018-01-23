@@ -63,20 +63,26 @@ class FashionLogger extends Component {
         .then(resp => resp.json())
         .then(arr =>
           this.setState({
-            user: arr[0]
+            user: arr
           })
         );
     });
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000/api/v1/users")
-      .then(resp => resp.json())
-      .then(arr =>
-        this.setState({
-          user: arr[0]
-        })
-      );
+    const token = localStorage.getItem("token");
+    if (token) {
+      fetch(`http://localhost:3000/api/v1/users/${token}`)
+        .then(resp => resp.json())
+        .then(arr => {
+          debugger;
+          this.setState({
+            user: arr
+          });
+        });
+    } else {
+      this.props.history.push("/login");
+    }
   }
   newPicSubmitHandler = e => {
     e.preventDefault();
@@ -90,7 +96,7 @@ class FashionLogger extends Component {
   };
 
   newPicChangeHandler = e => {
-    console.log(e.target);
+    console.log(this.state.users);
     let value = e.target.value;
     let name = e.target.name;
     switch (name) {
@@ -115,7 +121,6 @@ class FashionLogger extends Component {
   };
 
   render() {
-    console.log("render", this.state);
     return (
       <div id="background-holder">
         <Switch>
@@ -129,7 +134,7 @@ class FashionLogger extends Component {
             path="/topics/search"
             render={() => {
               return (
-                <div style={{ marginTop: "5.25em" }}>
+                <div style={{ marginTop: "2.55em" }}>
                   <Search user={this.state.user} />;
                 </div>
               );

@@ -1,6 +1,6 @@
 import React from "react";
 import ImageLister from "./ImageLister";
-import { Segment, Form, Image } from "semantic-ui-react";
+import { Segment, Form } from "semantic-ui-react";
 
 class Search extends React.Component {
   constructor(props) {

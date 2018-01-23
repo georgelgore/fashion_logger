@@ -35,12 +35,12 @@ const Navbar = props => {
             }`}</div>
           ) : null}
           {loggedIn ? (
-            <a>
-              <Icon name="user" />Log Out
-            </a>
+            <Link to="/login" onClick={props.handleLogout}>
+              <Icon name="user" centered="true" />Log Out
+            </Link>
           ) : (
             <Link to="/login">
-              <Icon name="user" />Log In
+              <Icon name="user" centered="true" />Log In
             </Link>
           )}
         </Menu.Item>

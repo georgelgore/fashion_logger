@@ -15,18 +15,18 @@ const TopicDisplay = props => {
   const nameToDisplay = filteredTopic[0] ? filteredTopic[0].name : "loading";
 
   return (
-    <Container style={{ marginTop: "5.25em" }}>
+    <Container style={{ marginTop: "5.50em" }}>
       <Segment float="true" tertiary>
         <Segment>
           <Header as="h1">{nameToDisplay}</Header>
         </Segment>
         <ImageLister images={filteredImages} />
       </Segment>
-      <Button float="right">
-        <Link to={`/topics/${props.id}/new`}>
+      <Link to={`/topics/${props.id}/new`}>
+        <Button fluid>
           <Icon name="photo" />Add Picture
-        </Link>
-      </Button>
+        </Button>
+      </Link>
     </Container>
   );
 };

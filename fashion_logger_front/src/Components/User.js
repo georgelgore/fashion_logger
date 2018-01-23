@@ -22,7 +22,6 @@ class User extends Component {
   };
 
   render() {
-    console.log("user:", this.props);
     return (
       <Container>
         <Header>Welcome, {this.props.info.username}!</Header>
