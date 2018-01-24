@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Form, Segment, Button, Image } from "semantic-ui-react";
 
 const NewTopic = props => {
-  console.log(props);
+  console.log("NEW OTPIC", props);
   return (
     <Segment inverted style={{ marginTop: "5.25em" }}>
       <h1>New Topic</h1>

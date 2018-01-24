@@ -32,11 +32,15 @@ class App extends Component {
     localStorage.setItem("token", user.id);
     this.setState({ auth: currentUser });
   };
+
   handleLogout = () => {
     localStorage.removeItem("token");
     this.setState({ auth: { currentUser: {} } });
+    console.log("HELLO");
   };
+
   render() {
+    console.log("current user", this.state.auth.currentUser);
     return (
       <div>
         <Navbar
@@ -60,7 +64,12 @@ class App extends Component {
             <Route
               path="/topics"
               render={props => {
-                return <FashionLogger {...props} />;
+                return (
+                  <FashionLogger
+                    {...props}
+                    currentUser={this.state.auth.currentUser}
+                  />
+                );
               }}
             />
           </Switch>

@@ -5,7 +5,7 @@ import { Card, Segment } from "semantic-ui-react";
 const ImageLister = props => {
   return (
     <Segment>
-      <Card.Group centered itemsPerRow={3}>
+      <Card.Group centered itemsPerRow={4}>
         {props.images.map(img => (
           <Image
             key={img.id}

@@ -12,15 +12,46 @@ class FashionLogger extends Component {
     super();
     this.state = {
       user: [],
+      current_user1: "",
       newPicInfo: {
         title: "",
         url: "",
         tag: "",
         topicId: ""
       },
-      newTopicInfo: {}
+      newTopicInfo: {
+        name: "",
+        user_id: "",
+        category: ""
+      }
     };
   }
+  newTopicChangeHandler = e => {
+    let value = e.target.value;
+    let name = e.target.name;
+    console.log(e.target);
+    console.log(name);
+    switch (name) {
+      case "name":
+        this.setState({
+          newTopicInfo: {
+            ...this.state.newTopicInfo,
+            name: value,
+            user_id: this.state.current_user
+          }
+        });
+        break;
+      case "category":
+        this.setState({
+          newTopicInfo: {
+            ...this.state.newTopicInfo,
+            category: value,
+            user_id: this.state.current_user
+          }
+        });
+        break;
+    }
+  };
 
   addPic = newPicData => {
     fetch("http://localhost:3000/api/v1/images", {
@@ -35,47 +66,32 @@ class FashionLogger extends Component {
         tag: newPicData.tag,
         topic_id: newPicData.topicId
       })
-    }).then(resp => {
-      return fetch("http://localhost:3000/api/v1/users")
-        .then(resp => resp.json())
-        .then(arr =>
-          this.setState({
-            user: arr[0]
-          })
-        );
-    });
+    }).then(resp => this.props.history.push(`/topics/${newPicData.topicId}`));
   };
+
   addTopic = newTopicData => {
-    fetch("http://localhost:3000/api/v1/images", {
+    fetch("http://localhost:3000/api/v1/topics", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
       body: JSON.stringify({
-        title: newTopicData.title,
-        url: newTopicData.url,
-        tag: newTopicData.tag,
-        topic_id: newTopicData.topicId
+        name: newTopicData.name,
+        user_id: this.props.currentUser.id,
+        category: newTopicData.category
       })
-    }).then(resp => {
-      return fetch("http://localhost:3000/api/v1/users")
-        .then(resp => resp.json())
-        .then(arr =>
-          this.setState({
-            user: arr
-          })
-        );
-    });
+    }).then(resp => this.props.history.push("/topics"));
   };
 
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
+      console.log("token");
       fetch(`http://localhost:3000/api/v1/users/${token}`)
         .then(resp => resp.json())
         .then(arr => {
-          debugger;
+          console.log("in did mount", arr);
           this.setState({
             user: arr
           });
@@ -84,21 +100,39 @@ class FashionLogger extends Component {
       this.props.history.push("/login");
     }
   }
+
+  componentWillReceiveProps(nextProps) {
+    const token = localStorage.getItem("token");
+    if (token) {
+      console.log("token");
+      fetch(`http://localhost:3000/api/v1/users/${token}`)
+        .then(resp => resp.json())
+        .then(arr => {
+          console.log("in did mount", arr);
+          this.setState({
+            user: arr
+          });
+        });
+    } else {
+      this.props.history.push("/login");
+    }
+  }
+
   newPicSubmitHandler = e => {
     e.preventDefault();
     let topicId = e.target.id;
     this.setState(
       {
-        newPicInfo: { ...this.state.newPicInfo, topicId: parseInt(topicId, 10) }
+        newPicInfo: { ...this.state.newPicInfo, topicId: parseInt(topicId) }
       },
       () => this.addPic(this.state.newPicInfo)
     );
   };
 
   newPicChangeHandler = e => {
-    console.log(this.state.users);
     let value = e.target.value;
     let name = e.target.name;
+
     switch (name) {
       case "title":
         this.setState({
@@ -115,19 +149,33 @@ class FashionLogger extends Component {
           newPicInfo: { ...this.state.newPicInfo, tag: value }
         });
         break;
-      default:
-        break;
     }
   };
 
+  newTopicSubmitHandler = e => {
+    console.log("in Submit Handler");
+    e.preventDefault();
+    this.addTopic(this.state.newTopicInfo);
+  };
+
   render() {
+    console.log("LOGGER", this.props);
     return (
       <div id="background-holder">
         <Switch>
           <Route
             path="/topics/new"
+            exact
             render={args => {
-              return <NewTopic />;
+              return (
+                <NewTopic
+                  userId={this.props.currentUser.id}
+                  newTopicChangeHandler={this.newTopicChangeHandler}
+                  newTopicSubmitHandler={this.newTopicSubmitHandler}
+                  newTopicName={this.state.newTopicInfo.name}
+                  newTopicCategory={this.state.newTopicInfo.category}
+                />
+              );
             }}
           />
           <Route
