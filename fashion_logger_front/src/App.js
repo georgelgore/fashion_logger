@@ -66,6 +66,8 @@ class App extends Component {
           newUser: { ...this.state.newUser, password: value }
         });
         break;
+      default:
+        break;
     }
   };
 
@@ -92,7 +94,6 @@ class App extends Component {
   };
 
   render() {
-    console.log("current user", this.state.auth.currentUser);
     return (
       <div>
         <Navbar

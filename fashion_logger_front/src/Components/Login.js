@@ -101,7 +101,7 @@ class logIn extends React.Component {
           <div className="ui message">
             New to us?
             <Link to="/users/new">
-              <button>Sign Up</button>
+              <a centered="true"> Sign Up </a>
             </Link>
           </div>
         </div>

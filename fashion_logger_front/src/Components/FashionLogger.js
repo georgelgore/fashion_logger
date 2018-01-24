@@ -6,7 +6,6 @@ import { Header } from "semantic-ui-react";
 import NewTopic from "./NewTopic";
 import NewPic from "./NewPic";
 import Search from "./Search";
-import NewUser from "./NewUser";
 
 class FashionLogger extends Component {
   constructor() {
@@ -51,6 +50,8 @@ class FashionLogger extends Component {
           }
         });
         break;
+      default:
+        break;
     }
   };
 
@@ -88,11 +89,9 @@ class FashionLogger extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
-      console.log("token");
       fetch(`http://localhost:3000/api/v1/users/${token}`)
         .then(resp => resp.json())
         .then(arr => {
-          console.log("in did mount", arr);
           this.setState({
             user: arr
           });
@@ -105,12 +104,17 @@ class FashionLogger extends Component {
   componentWillReceiveProps(nextProps) {
     const token = localStorage.getItem("token");
     if (token) {
-      console.log("token");
       fetch(`http://localhost:3000/api/v1/users/${token}`)
         .then(resp => resp.json())
         .then(obj => {
           this.setState({
-            user: obj
+            user: obj,
+            newPicInfo: {
+              title: "",
+              url: "",
+              tag: "",
+              topicId: ""
+            }
           });
         });
     } else {
@@ -123,7 +127,7 @@ class FashionLogger extends Component {
     let topicId = e.target.id;
     this.setState(
       {
-        newPicInfo: { ...this.state.newPicInfo, topicId: parseInt(topicId) }
+        newPicInfo: { ...this.state.newPicInfo, topicId: parseInt(topicId, 10) }
       },
       () => this.addPic(this.state.newPicInfo)
     );
@@ -149,6 +153,8 @@ class FashionLogger extends Component {
           newPicInfo: { ...this.state.newPicInfo, tag: value }
         });
         break;
+      default:
+        break;
     }
   };
 
@@ -156,10 +162,16 @@ class FashionLogger extends Component {
     console.log("in Submit Handler");
     e.preventDefault();
     this.addTopic(this.state.newTopicInfo);
+    this.setState({
+      newTopicInfo: {
+        name: "",
+        user_id: "",
+        category: ""
+      }
+    });
   };
 
   render() {
-    console.log("LOGGER", this.props);
     return (
       <div id="background-holder">
         <Switch>
@@ -217,7 +229,7 @@ class FashionLogger extends Component {
             path="/topics"
             render={() => {
               return (
-                <div clearing="true" style={{ marginTop: "5.25em" }}>
+                <div clearing="true" style={{ marginTop: "5.35em" }}>
                   <div secondary="true">
                     <Header as="h1" textAlign="center">
                       Your Topics
