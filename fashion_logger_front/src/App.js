@@ -129,11 +129,13 @@ class App extends Component {
               path="/users/new"
               render={props => {
                 return (
-                  <NewUser
-                    newUserInfo={this.state.newUser}
-                    handleNewUser={this.handleNewUser}
-                    submitHandler={this.newUserSubmitHandler}
-                  />
+                  <div id="bg">
+                    <NewUser
+                      newUserInfo={this.state.newUser}
+                      handleNewUser={this.handleNewUser}
+                      submitHandler={this.newUserSubmitHandler}
+                    />
+                  </div>
                 );
               }}
             />

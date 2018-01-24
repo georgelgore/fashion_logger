@@ -7,10 +7,10 @@ const NewUser = props => {
     <Container>
       <div
         style={{
-          marginTop: "10.00em",
-          marginLeft: "30%",
-          marginRight: "30%",
-          maxWidth: "450px"
+          marginLeft: "auto",
+          marginRight: "auto",
+          maxWidth: "450px",
+          paddingTop: "200px"
         }}
       >
         <form className="ui large form" onSubmit={props.submitHandler}>

@@ -195,7 +195,7 @@ class FashionLogger extends Component {
             path="/topics/search"
             render={() => {
               return (
-                <div style={{ marginTop: "2.55em" }}>
+                <div style={{ marginTop: "1em" }}>
                   <Search user={this.state.user} />;
                 </div>
               );
@@ -230,8 +230,8 @@ class FashionLogger extends Component {
             render={() => {
               return (
                 <div clearing="true" style={{ marginTop: "5.35em" }}>
-                  <div secondary="true">
-                    <Header as="h1" textAlign="center">
+                  <div secondary="true" id="bg2">
+                    <Header as="h1" inverted textAlign="center">
                       Your Topics
                     </Header>
                     <User info={this.state.user} clicked={this.state.clicked} />

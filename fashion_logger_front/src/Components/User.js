@@ -24,7 +24,7 @@ class User extends Component {
   render() {
     return (
       <Container>
-        <Header>Welcome, {this.props.info.username}!</Header>
+        <Header inverted>Welcome, {this.props.info.username}!</Header>
         {this.props.info.topics ? (
           <TopicLister
             topics={this.props.info.topics}

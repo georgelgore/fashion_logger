@@ -53,12 +53,12 @@ class logIn extends React.Component {
   render() {
     const { fields } = this.state;
     return (
-      <Container>
+      <Container id="bg">
         <div
           style={{
             marginTop: "10.00em",
-            marginLeft: "30%",
-            marginRight: "30%",
+            marginLeft: "auto",
+            marginRight: "auto",
             maxWidth: "450px"
           }}
         >

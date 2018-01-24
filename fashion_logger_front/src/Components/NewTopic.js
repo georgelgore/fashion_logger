@@ -3,7 +3,7 @@ import { Form, Segment, Button, Image } from "semantic-ui-react";
 
 const NewTopic = props => {
   return (
-    <Segment inverted style={{ marginTop: "5.25em" }}>
+    <Segment inverted style={{ marginTop: "4.90em" }}>
       <h1>New Topic</h1>
       <Form inverted onSubmit={props.newTopicSubmitHandler}>
         <Form.Group widths="equal">

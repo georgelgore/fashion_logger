@@ -17,7 +17,7 @@ const Topic = props => {
           src={
             props.images[0]
               ? props.images[0].url
-              : "https://data.whicdn.com/images/558281/large.jpg"
+              : "https://hips.hearstapps.com/hbz.h-cdn.co/assets/cm/15/04/54c039d272b0b_-_hbz-april-2014-solange-knowles-5-xl-promo.jpg"
           }
         />
         <Card.Content>

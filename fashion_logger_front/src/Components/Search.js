@@ -33,8 +33,8 @@ class Search extends React.Component {
     console.log("inside", this.props.user.images);
     console.log("state", this.state);
     return (
-      <Segment>
-        <Segment inverted style={{ marginTop: "5.25em" }}>
+      <div id="bg3">
+        <Segment inverted>
           <h1>Search Categories</h1>
           <Form inverted>
             <Form.Input
@@ -47,9 +47,9 @@ class Search extends React.Component {
               value={this.state.searchTerm}
             />
           </Form>
+          <ImageLister images={this.state.toDisplay} />
         </Segment>
-        <ImageLister images={this.state.toDisplay} />
-      </Segment>
+      </div>
     );
   }
 }
