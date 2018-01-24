@@ -51,8 +51,6 @@ class logIn extends React.Component {
   };
 
   render() {
-    console.log("login props:", this.props);
-
     const { fields } = this.state;
     return (
       <Container>

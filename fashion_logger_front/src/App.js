@@ -5,9 +5,17 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
 import Navbar from "./Components/Navbar";
+import NewUser from "./Components/NewUser";
 
 class App extends Component {
-  state = { auth: { currentUser: {} } };
+  state = {
+    auth: { currentUser: {} },
+    newUser: {
+      username: "",
+      email: "",
+      password: ""
+    }
+  };
 
   componentDidMount() {
     const token = localStorage.getItem("token");
@@ -39,6 +47,50 @@ class App extends Component {
     console.log("HELLO");
   };
 
+  handleNewUser = e => {
+    let value = e.target.value;
+    let name = e.target.name;
+    switch (name) {
+      case "username":
+        this.setState({
+          newUser: { ...this.state.newUser, username: value }
+        });
+        break;
+      case "email":
+        this.setState({
+          newUser: { ...this.state.newUser, email: value }
+        });
+        break;
+      case "password":
+        this.setState({
+          newUser: { ...this.state.newUser, password: value }
+        });
+        break;
+    }
+  };
+
+  addUser = newUserData => {
+    fetch("http://localhost:3000/api/v1/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        user: {
+          username: newUserData.username,
+          email: newUserData.email,
+          password: newUserData.password
+        }
+      })
+    }).then(resp => this.props.history.push("/login"));
+  };
+
+  newUserSubmitHandler = e => {
+    e.preventDefault();
+    this.addUser(this.state.newUser);
+  };
+
   render() {
     console.log("current user", this.state.auth.currentUser);
     return (
@@ -68,6 +120,18 @@ class App extends Component {
                   <FashionLogger
                     {...props}
                     currentUser={this.state.auth.currentUser}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/users/new"
+              render={props => {
+                return (
+                  <NewUser
+                    newUserInfo={this.state.newUser}
+                    handleNewUser={this.handleNewUser}
+                    submitHandler={this.newUserSubmitHandler}
                   />
                 );
               }}

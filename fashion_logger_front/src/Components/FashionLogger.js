@@ -108,10 +108,9 @@ class FashionLogger extends Component {
       console.log("token");
       fetch(`http://localhost:3000/api/v1/users/${token}`)
         .then(resp => resp.json())
-        .then(arr => {
-          console.log("in did mount", arr);
+        .then(obj => {
           this.setState({
-            user: arr
+            user: obj
           });
         });
     } else {
@@ -179,6 +178,7 @@ class FashionLogger extends Component {
               );
             }}
           />
+
           <Route
             path="/topics/search"
             render={() => {
