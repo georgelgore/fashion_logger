@@ -12,6 +12,7 @@ class FashionLogger extends Component {
     super();
     this.state = {
       user: [],
+      users: [],
       current_user1: "",
       newPicInfo: {
         title: "",
@@ -89,11 +90,18 @@ class FashionLogger extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
-      fetch(`http://localhost:3000/api/v1/users/${token}`)
+      fetch(`http://localhost:3000/api/v1/users/`)
         .then(resp => resp.json())
         .then(arr => {
+          let user = arr.find(user => {
+            return user.id === +token;
+          });
+          let users = arr.filter(user => {
+            return user.id !== +token;
+          });
           this.setState({
-            user: arr
+            user: user,
+            users: users
           });
         });
     } else {
@@ -172,6 +180,7 @@ class FashionLogger extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div id="background-holder">
         <Switch>
