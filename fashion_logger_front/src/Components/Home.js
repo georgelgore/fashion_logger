@@ -1,5 +1,4 @@
 import React from "react";
-import { Image, Header, Segment } from "semantic-ui-react";
 
 const Home = props => {
   return (

@@ -196,7 +196,7 @@ class FashionLogger extends Component {
             render={() => {
               return (
                 <div style={{ marginTop: "1em" }}>
-                  <Search user={this.state.user} />;
+                  <Search user={this.state.user} />
                 </div>
               );
             }}

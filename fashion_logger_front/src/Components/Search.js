@@ -23,17 +23,21 @@ class Search extends React.Component {
   }
 
   updateSearchTerm = event => {
-    let toShow = this.state.images.filter(img =>
-      img.tag.includes(event.target.value)
-    );
-    this.setState({ searchTerm: event.target.value, toDisplay: toShow });
+    if (event.target.value.length === 0) {
+      this.setState({ toDisplay: [], searchTerm: "" });
+    } else {
+      let toShow = this.state.images.filter(img =>
+        img.tag.includes(event.target.value)
+      );
+      this.setState({ searchTerm: event.target.value, toDisplay: toShow });
+    }
   };
 
   render() {
     console.log("inside", this.props.user.images);
     console.log("state", this.state);
     return (
-      <div id="bg3">
+      <div id="bg5">
         <Segment inverted>
           <h1>Search Categories</h1>
           <Form inverted>
