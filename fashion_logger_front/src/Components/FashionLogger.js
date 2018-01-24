@@ -6,6 +6,7 @@ import { Header } from "semantic-ui-react";
 import NewTopic from "./NewTopic";
 import NewPic from "./NewPic";
 import Search from "./Search";
+import NewUser from "./NewUser";
 
 class FashionLogger extends Component {
   constructor() {
