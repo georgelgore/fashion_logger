@@ -15,19 +15,21 @@ const TopicDisplay = props => {
   const nameToDisplay = filteredTopic[0] ? filteredTopic[0].name : "loading";
 
   return (
-    <Container style={{ marginTop: "5.50em" }}>
-      <Segment float="true" tertiary>
-        <Segment>
-          <Header as="h1">{nameToDisplay}</Header>
+    <div id="bg2">
+      <Container style={{ marginTop: "5.50em" }}>
+        <Segment float="true" tertiary>
+          <Segment>
+            <Header as="h1">{nameToDisplay}</Header>
+          </Segment>
+          <ImageLister images={filteredImages} />
         </Segment>
-        <ImageLister images={filteredImages} />
-      </Segment>
-      <Link to={`/topics/${props.id}/new`}>
-        <Button fluid>
-          <Icon name="photo" />Add Picture
-        </Button>
-      </Link>
-    </Container>
+        <Link to={`/topics/${props.id}/new`}>
+          <Button fluid>
+            <Icon name="photo" />Add Picture
+          </Button>
+        </Link>
+      </Container>
+    </div>
   );
 };
 export default TopicDisplay;
