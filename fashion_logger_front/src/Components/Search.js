@@ -12,16 +12,22 @@ class Search extends React.Component {
     };
   }
 
+  componentDidMount() {
+    fetch("http://localhost:3000/api/v1/images")
+      .then(resp => resp.json())
+      .then(arr => {
+        this.setState({
+          images: arr
+        });
+      });
+  }
+
   updateSearchTerm = event => {
     let toShow = this.state.images.filter(img =>
       img.tag.includes(event.target.value)
     );
     this.setState({ searchTerm: event.target.value, toDisplay: toShow });
   };
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({ images: nextProps.user.images });
-  }
 
   render() {
     console.log("inside", this.props.user.images);
