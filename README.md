@@ -4,7 +4,6 @@ An app built to store all of your favorite fashions! Create topics like: "Street
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 To get started, clone down the project. For the backend files, run 'bundle install' 'rails:db migrate' and 'rails db:seed'. For the front, run 'npm install' and 'npm start'.
 
 ### Prerequisites
