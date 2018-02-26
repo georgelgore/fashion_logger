@@ -17,6 +17,9 @@ The app is preloaded with the required gems and npm files. As long as you have r
 ### Demo
 https://tinyurl.com/ybwjng99
 
+### Other Apps
+Biddr - https://github.com/georgelgore/biddr
+
 ### Contributors
 
 Tashawn Williams- https://github.com/crutell331
